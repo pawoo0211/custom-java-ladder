@@ -1,11 +1,21 @@
-package domain;
+package domain.lotto;
+
+import domain.delimiter.SplitStrategy;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
+
+    public Lotto(String stringNumbers, SplitStrategy splitStrategy) {
+        String[] numbers = splitStrategy.split(stringNumbers);
+        this.numbers = Arrays.stream(numbers)
+                .map(number -> Integer.valueOf(number))
+                .collect(Collectors.toList());
+    }
 
     public Lotto(List<Integer> numbers) {
         this.numbers = numbers;

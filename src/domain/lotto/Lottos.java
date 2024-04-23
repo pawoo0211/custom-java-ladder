@@ -1,9 +1,6 @@
-package domain;
+package domain.lotto;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Lottos {
     private List<Lotto> lottos;
@@ -34,7 +31,7 @@ public class Lottos {
             result.replace(winningCount, savedValue);
         }
 
-        return result;
+        return Collections.unmodifiableMap(result);
     }
 
     private Map<Integer, Integer> initializeFindWinningResult() {

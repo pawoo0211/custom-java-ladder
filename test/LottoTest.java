@@ -1,6 +1,6 @@
 
-import domain.Lotto;
-import domain.Lottos;
+import domain.lotto.Lotto;
+import domain.lotto.Lottos;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
