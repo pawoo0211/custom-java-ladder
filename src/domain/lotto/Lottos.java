@@ -3,14 +3,14 @@ package domain.lotto;
 import java.util.*;
 
 public class Lottos {
-    private List<Lotto> lottos;
+    private List<Lotto> lottoList;
 
-    public Lottos(List<Lotto> lottos) {
-        this.lottos = lottos;
+    public Lottos(List<Lotto> lottoList) {
+        this.lottoList = lottoList;
     }
 
     public Lottos() {
-        lottos = new ArrayList();
+        lottoList = new ArrayList();
     }
 
     public int generateByPrice(int price) {
@@ -18,14 +18,14 @@ public class Lottos {
         for (int number = 1; number <= numberOfLotto; number++) {
             Lotto lotto = new Lotto();
             lotto.generate();
-            lottos.add(lotto);
+            lottoList.add(lotto);
         }
-        return lottos.size();
+        return lottoList.size();
     }
 
     public Map<Integer, Integer> findAllWinningLotto(Lotto winningLotto) {
         Map<Integer, Integer> result = initializeFindWinningResult();
-        for (Lotto lotto : lottos) {
+        for (Lotto lotto : lottoList) {
             int winningCount = lotto.findWinningCount(winningLotto);
             int savedValue = result.get(winningCount) + 1;
             result.replace(winningCount, savedValue);
@@ -43,10 +43,18 @@ public class Lottos {
         return result;
     }
 
+    public List<Lotto> getLottoList() {
+        return Collections.unmodifiableList(lottoList);
+    }
+
+    public int numberOfLotto() {
+        return lottoList.size();
+    }
+
     @Override
     public String toString() {
         return "Lottos{" +
-                "lottos=" + lottos +
+                "lottos=" + lottoList +
                 '}';
     }
 }
