@@ -2,14 +2,12 @@ package lotto;
 
 import domain.lotto.Lotto;
 import domain.lotto.Lottos;
+import domain.lotto.ProfitabilityCalculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @DisplayName("로또 도메인 테스트")
@@ -56,5 +54,23 @@ public class LottoTest {
                 .collect(Collectors.toList());
 
         return new Lotto(winningNumbers);
+    }
+
+    @Test
+    void calculate() {
+        ProfitabilityCalculator calculator = new ProfitabilityCalculator();
+        int price = 14000;
+        Map<Integer, Integer> result = 통계_결과_생성();
+        System.out.println("result : " + calculator.calculate(price, result));
+    }
+
+    private Map<Integer, Integer> 통계_결과_생성() {
+        Map<Integer, Integer> result = new HashMap<>();
+        result.put(3, 1);
+        result.put(4, 0);
+        result.put(5, 0);
+        result.put(6, 0);
+
+        return result;
     }
 }
