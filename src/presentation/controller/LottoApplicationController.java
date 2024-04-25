@@ -1,8 +1,10 @@
 package presentation.controller;
 
 import application.dto.request.LottoGenerateRequest;
+import application.dto.request.LottoResultRequest;
 import application.dto.response.LottoGenerateResponse;
 import application.dto.response.LottoGenerateResponses;
+import application.dto.response.LottoResultResponse;
 import application.service.LottoApplicationService;
 import presentation.view.InputView;
 import presentation.view.ResultView;
@@ -30,5 +32,16 @@ public class LottoApplicationController {
 
     public void printGeneratedLotto(LottoGenerateResponses responses) {
         resultView.printGeneratedLotto(responses);
+    }
+
+    public LottoResultRequest inputWinningNumber(String id) {
+        LottoResultRequest request = inputView.inputWinningNumber();
+        request.addId(id);
+        return request;
+    }
+
+    public LottoResultResponse printResult(LottoResultRequest resultRequest) {
+        LottoResultResponse resultResponse = service.obtainResult(resultRequest);
+        return resultResponse;
     }
 }
