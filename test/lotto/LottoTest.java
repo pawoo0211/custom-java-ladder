@@ -1,3 +1,4 @@
+package lotto;
 
 import domain.lotto.Lotto;
 import domain.lotto.Lottos;

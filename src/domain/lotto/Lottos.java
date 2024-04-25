@@ -3,6 +3,7 @@ package domain.lotto;
 import java.util.*;
 
 public class Lottos {
+    private String id = UUID.randomUUID().toString();
     private List<Lotto> lottoList;
 
     public Lottos(List<Lotto> lottoList) {
@@ -41,6 +42,10 @@ public class Lottos {
         result.put(5, 0);
         result.put(6, 0);
         return result;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public List<Lotto> getLottoList() {
