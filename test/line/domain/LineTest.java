@@ -5,6 +5,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 
@@ -42,6 +44,19 @@ public class LineTest {
         assertAll(
                 () -> Assertions.assertThat(line.isRow(0)).isEqualTo(false),
                 () -> Assertions.assertThat(line.isRow(1)).isEqualTo(true)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 2, 4, 6})
+    @DisplayName("참여 인원수가 4명일 때 4개의 세로 선을 생성한다.")
+    void createColumn(int pointsIndex) {
+        int 참가자_인원 = 4;
+        Line line = new Line(참가자_인원);
+
+        assertAll(
+                () -> Assertions.assertThat(line.hasPointAt(pointsIndex)).isEqualTo(true),
+                () -> Assertions.assertThat(line.isColumn(pointsIndex)).isEqualTo(true)
         );
     }
 }
