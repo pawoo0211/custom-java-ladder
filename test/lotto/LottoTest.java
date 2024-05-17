@@ -1,8 +1,10 @@
 package lotto;
 
-import domain.lotto.Lotto;
-import domain.lotto.Lottos;
-import domain.lotto.ProfitabilityCalculator;
+import lotto.domain.delimiter.CommaAndSpaceSplit;
+import lotto.domain.delimiter.SplitStrategy;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.Lottos;
+import lotto.domain.lotto.ProfitabilityCalculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -72,5 +74,21 @@ public class LottoTest {
         result.put(6, 0);
 
         return result;
+    }
+
+    @Test
+    @DisplayName("당첨 로또 생성 테스트")
+    void create_winningLotto() {
+        String winningNumber = "42, 16, 6, 1, 2, 3";
+        Lotto winningLotto = new Lotto(winningNumber, new CommaAndSpaceSplit());
+        System.out.println("winningLotto : " + winningLotto);
+    }
+
+    @Test
+    @DisplayName("입력된 문자열 슬라이싱 테스트")
+    void split() {
+        String winningNumber = "42, 16, 6, 1, 2, 3";
+        SplitStrategy commaAndSpaceSplit = new CommaAndSpaceSplit();
+        commaAndSpaceSplit.split(winningNumber);
     }
 }

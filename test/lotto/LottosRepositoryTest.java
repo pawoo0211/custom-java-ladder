@@ -1,9 +1,9 @@
 package lotto;
 
-import domain.lotto.Lotto;
-import domain.lotto.Lottos;
-import infrastructure.repository.LottosRepository;
-import infrastructure.repository.LottosRepositoryImpl;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.Lottos;
+import lotto.infrastructure.repository.LottosRepository;
+import lotto.infrastructure.repository.LottosRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
